@@ -17,9 +17,9 @@ const server = new ApolloServer({
   resolvers,
   context: async ({ req }) => {
     let authToken = null;
+    let currentUser = null;
     try {
-      authToken = req.headers.authorization;
-      let currentUser = null;
+      authToken = req.headers.authorization; 
       if (authToken) {
         //find the user in our db or if nobody matches, create a new one
         currentUser = await findOrCreateUser(authToken);
